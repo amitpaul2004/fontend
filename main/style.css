@@ -1,0 +1,209 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  
+  /* Background Image styles */
+    background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), /* Overlay for readability */
+    url('img/Gemini_Generated_Image_bj4rtobj4rtobj4r.png') no-repeat center center fixed; /* Your local image */
+  background-size: cover; /* Ensures image covers the entire body */
+  
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* Centered vertically */
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  padding-top: 150px;
+}
+
+/* Title */
+h1 {
+  font-size: 64px;
+  font-weight: 700;
+  margin: 0;
+}
+
+h1 span {
+  background: linear-gradient(90deg, #ff5a3c, #ff4ecf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  font-size: 22px;
+  margin: 16px 0 50px;
+  opacity: 0.9;
+}
+
+/* Chat Box */
+.chat-box {
+  background: #1c1c1c;
+  border-radius: 20px;
+  padding: 16px 20px;
+  width: 940px;
+  height: 150px;
+  max-width: 95%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Top input */
+.chat-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  color: #fff;
+  width: 100%;
+}
+/* --- Typing Animation (Looping Version) --- */
+
+/* 1. Modify the typing animation to include a "deleting" phase */
+@keyframes typing {
+  0% {
+    width: 0; /* Start with no width */
+  }
+  40% {
+    width: 100%; /* Typing phase: expand to full width */
+  }
+  60% {
+    width: 100%; /* Pause phase: stay at full width */
+  }
+  100% {
+    width: 0; /* Deleting phase: shrink back to zero width */
+  }
+}
+
+/* 2. Create the blinking cursor animation (no change here) */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* 3. Apply the looping animations to the input's placeholder */
+.chat-box input {
+  width: 100%;
+  
+  white-space: nowrap; 
+  overflow: hidden; 
+
+
+
+  /* Apply both animations, with the typing one set to infinite */
+  animation: 
+    typing 10s steps(38) infinite, /* The looping typing effect */
+    blink 3s step-end infinite;    /* The blinking cursor */
+}
+.chat-box input::placeholder {
+  color: #aaa;
+}
+
+/* Footer controls */
+.chat-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 155px; 
+}
+
+/* Buttons */
+.circle-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #2a2a2a;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.btn {
+  background: #333;
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background: #444;
+}
+
+/* Icons */
+.icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px; /* Base size for icons */
+  color: #fff; /* Ensures Bootstrap Icons are white */
+}
+
+.icon i { /* Targeting the Bootstrap Icon itself */
+  font-size: 18px; /* Slightly larger for better visibility */
+}
+
+.icon:hover {
+  background: #3a3a3a;
+}
+
+.icon.dark {
+  background: #444;
+}
+
+.icon.send {
+  background: #666;
+}
+/* --- Fly Up Animation --- */
+
+/* --- Fly Up Animation --- */
+
+/* This is the element we'll create with JavaScript */
+.flying-text {
+  position: absolute; /* Position it precisely on the page */
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  color: #fff;
+  background: #1c1c1c; /* Match the chatbox so it looks like it came from there */
+  padding: 5px 10px;
+  border-radius: 8px;
+  z-index: 100;
+  
+  /* Link to the animation keyframes */
+  animation: fly-up 1s ease-in-out forwards;
+}
+
+/* These are the animation steps */
+@keyframes fly-up {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-150px) scale(0.5); /* Fly up and shrink */
+  }
+}
