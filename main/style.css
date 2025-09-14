@@ -1803,3 +1803,14 @@ body {
 }
 
 .send-btn:hover { background: #1a3a7a; }
+@keyframes typing {
+  0% { content: "."; }
+  33% { content: ".."; }
+  66% { content: "..."; }
+  100% { content: "."; }
+}
+.typing-indicator::after {
+  content: '...';
+  display: inline-block;
+  animation: typing 1.5s infinite;
+}
