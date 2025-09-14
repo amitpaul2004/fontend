@@ -3,41 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lovable Style Chat Box</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  
+  <title>University Header</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-      <h1>Bhhfahfia;f <span>lubub</span></h1>
-  <p>kmonsfuafuhnasofoaspfoapsnfo</p>
-  
-  <div class="chat-box">
-    <input type="text" placeholder="Ask to create a blog about...">
 
-    <div class="chat-footer">
-      <div class="left-controls">
-        <button class="circle-btn" aria-label="Add attachment">+</button>
-        <button class="btn">🌐 Public</button>
-      </div>
-
-      <div class="right-controls">
-        <div class="icon" aria-label="Get suggestions"><i class="bi bi-lightbulb"></i></div>
-        <div class="icon" aria-label="Regenerate response"><i class="bi bi-arrow-repeat"></i></div>
-        <div class="icon dark" aria-label="Use voice input"><i class="bi bi-mic-fill"></i></div>
-        <div class="icon send" aria-label="Send message"><i class="bi bi-send-fill"></i></div>
+  <!-- ===== TOP BANNER ===== -->
+  <div class="admission-bar">
+    <div class="left">Admission Open 2025</div>
+    <div class="right">
+      <button class="apply-btn">Apply Now</button>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </div>
 
+  <!-- ===== UNIVERSITY INFO SECTION ===== -->
+  <div class="info-bar">
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/en/c/c0/JIS_University_logo.png" alt="University Logo">
+    </div>
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <div class="contact-text">
+          <span>Call</span>
+          <small>+91 8697743361 / 62</small>
+        </div>
+      </div>
+      <div class="contact-item">
+        <i class="fab fa-whatsapp"></i>
+        <div class="contact-text">
+          <span>Whatsapp</span>
+          <small>8697743361</small>
+        </div>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="contact-text">
+          <span>Address</span>
+          <small>81, Nilgunj Road, Agarpara, Kolkata - 700109</small>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <script src="script.js"></script> </body>
-</html>
+  <!-- ===== NAVIGATION MENU ===== -->
+  <div class="navbar" id="navbar">
+    <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
+    <ul id="nav-links">
+      <li>
+        <a href="#">About HEI ▾</a>
+        <div class="dropdown">
+          <a href="#">History</a>
+          <a href="#">Mission & Vision</a>
+          <a href="#">Leadership</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Administration ▾</a>
+        <div class="dropdown">
+          <a href="#">Chancellor</a>
+          <a href="#">Vice Chancellor</a>
+          <a href="#">Deans</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Academics ▾</a>
+        <div class="dropdown">
+          <a href="#">Departments</a>
+          <a href="#">Programs</a>
+          <a href="#">Courses</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Admissions & Fee ▾</a>
+        <div class="dropdown">
+          <a href="#">Apply Now</a>
+          <a href="#">Fee Structure</a>
+          <a href="#">Scholarships</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Research ▾</a>
+        <div class="dropdown">
+          <a href="#">Publications</a>
+          <a href="#">Projects</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Student Life ▾</a>
+        <div class="dropdown">
+          <a href="#">Hostel</a>
+          <a href="#">Clubs</a>
+          <a href="#">Events</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Training & Placement ▾</a>
+        <div class="dropdown">
+          <a href="#">Career Services</a>
+          <a href="#">Recruiters</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Information Corner ▾</a>
+        <div class="dropdown">
+          <a href="#">Notices</a>
+          <a href="#">Downloads</a>
+        </div>
+      </li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </div>
 
+  <!-- ===== SLIDESHOW SECTION ===== -->
+  <div class="slideshow-container">
+  <div class="slides-wrapper">
+    <div class="slide">
+      <img src="https://picsum.photos/id/1011/1600/500" alt="Slide 1">
+    </div>
+    <div class="slide">
+      <img src="https://picsum.photos/id/1015/1600/500" alt="Slide 2">
+    </div>
+    <div class="slide">
+      <img src="https://picsum.photos/id/1020/1600/500" alt="Slide 3">
+    </div>
+    <div class="slide">
+      <img src="https://picsum.photos/id/1035/1600/500" alt="Slide 4">
+    </div>
+  </div>
+
+  <div class="dots">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</div>
+
+  <script src="script.js"></script>
 </body>
 </html>
