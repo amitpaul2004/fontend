@@ -206,7 +206,7 @@ body {
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
+} 
 
 .slides-wrapper {
   display: flex;
@@ -268,4 +268,18 @@ body {
   .menu-icon {
     display: block;
   }
+}
+.announcement-bar {
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 15px 25px;
+  background: #fff;
+  color: #555;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 100;
 }
