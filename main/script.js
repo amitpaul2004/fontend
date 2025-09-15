@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendSound = document.getElementById('send-sound');
     
     // New API endpoint
-    const API_URL = "https://215a1e7182cd.ngrok-free.app/chat";
+    const API_URL = "https://4e6e3e8c336b.ngrok-free.app/chat";
 
     if (chatbotWidget && chatWindow && closeChatBtn && chatBody && chatInput && sendBtn && sendSound) {
         let isAudioUnlocked = false;
@@ -209,3 +209,69 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Get the required HTML elements
+const micBtn = document.getElementById('mic-btn');
+const chatInput = document.getElementById('chat-input');
+
+// --- MIC BUTTON & SPEECH RECOGNITION ---
+
+// 1. Check for browser support
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition;
+
+if (SpeechRecognition && micBtn) {
+    recognition = new SpeechRecognition();
+    recognition.continuous = false; // Stop listening after the user pauses
+    recognition.lang = 'en-US';    // Set language
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    let isListening = false; // State tracker
+
+    // 2. Handle the click event to start or stop listening
+    micBtn.addEventListener('click', () => {
+        if (isListening) {
+            recognition.stop();
+            return;
+        }
+        try {
+            recognition.start();
+        } catch(e) {
+            console.error("Speech recognition could not be started: ", e);
+        }
+    });
+
+    // 3. Add event listeners for the recognition process
+
+    // When recognition starts
+    recognition.onstart = () => {
+        isListening = true;
+        micBtn.classList.add('active');
+        chatInput.placeholder = "Listening...";
+    };
+
+    // When recognition ends
+    recognition.onend = () => {
+        isListening = false;
+        micBtn.classList.remove('active');
+        chatInput.placeholder = "Type your message...";
+    };
+
+    // When a result is received
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        chatInput.value = transcript; // Put the transcribed text into the input field
+    };
+
+    // Handle errors
+    recognition.onerror = (event) => {
+        console.error(`Speech recognition error: ${event.error}`);
+        chatInput.placeholder = "Mic error. Please try again.";
+    };
+
+} else if (micBtn) {
+    // Hide the button if the browser doesn't support the API
+    console.warn("Speech Recognition not supported in this browser.");
+    micBtn.style.display = 'none';
+}

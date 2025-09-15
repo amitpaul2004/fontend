@@ -971,7 +971,7 @@ body {
 /* ===== STATS BANNER SECTION ===== --> */
 .stats-banner {
   padding: 80px 20px;
-  background-image: linear-gradient(rgba(13, 27, 61, 0.85), rgba(13, 27, 61, 0.85)), url('https://i.postimg.cc/WbF4FjCq/stats-bg.jpg');
+  background-image: linear-gradient(rgba(13, 27, 61, 0.85), rgba(13, 27, 61, 0.85)), url('/img/images.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Parallax effect */
@@ -1308,7 +1308,7 @@ body {
 /* ===== CALL TO ACTION SECTION ===== */
 .cta-section {
   padding: 100px 20px;
-  background-image: linear-gradient(rgba(13, 27, 61, 0.9), rgba(13, 27, 61, 0.9)), url('https://i.postimg.cc/WbF4FjCq/stats-bg.jpg');
+  background-image: linear-gradient(rgba(13, 27, 61, 0.9), rgba(13, 27, 61, 0.9)), url('/img/images.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Parallax effect */
@@ -1813,6 +1813,96 @@ body {
   content: '...';
   display: inline-block;
   animation: typing 1.5s infinite;
+}
+
+/* ===== CHAT FOOTER & ICONS (UPDATED ALIGNMENT) ===== */
+
+.chat-footer {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+    background: #fff;
+    /* gap: 10px; -- This is removed for precise control */
+}
+
+.chat-footer input {
+    flex-grow: 1;
+    border: none;
+    background: #f4f7f9;
+    border-radius: 20px;
+    padding: 12px 18px;
+    font-size: 15px;
+}
+
+.chat-footer input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(13, 27, 61, 0.2);
+}
+
+.mic-btn {
+    background: transparent;
+    color: #555;
+    border: none;
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: background 0.3s, color 0.3s;
+    margin-left: 10px; /* Space between input and mic button */
+}
+
+.mic-btn:hover {
+    background-color: #f0f0f0;
+    color: #0d1b3d;
+}
+
+.send-btn {
+    background: #0d1b3d;
+    color: #fff;
+    border: none;
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background 0.3s;
+    margin-left: 5px; /* Smaller space between mic and send button */
+}
+
+.send-btn:hover { 
+    background: #1a3a7a; 
+}
+
+/* ===== MICROPHONE ACTIVE STATE & ANIMATION ===== */
+
+/* Keyframes for the pulsing ring effect */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(220, 53, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+  }
+}
+
+/* This style applies ONLY when the mic button has the 'active' class */
+.mic-btn.active {
+    background-color: #dc3545; /* A standard red color for 'recording' */
+    color: #fff;
+    animation: pulse-ring 1.5s infinite; /* Apply the pulsing animation */
 }
 
 
