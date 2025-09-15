@@ -6,6 +6,7 @@ function toggleMenu() {
 // This event listener waits for the entire HTML page to be loaded and ready.
 document.addEventListener('DOMContentLoaded', () => {
 
+
     // ===== NAVBAR SHADOW ON SCROLL =====
     const navbar = document.getElementById("navbar");
     if (navbar) {
@@ -87,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSliderPosition();
     }
 
-    // ===== CHATBOT =====
+    // ===== CHATBOT (UPDATED LOGIC) =====
     const chatbotWidget = document.querySelector('.chatbot-widget');
     const chatWindow = document.querySelector('.chat-window');
     const closeChatBtn = document.querySelector('.close-chat');
@@ -95,6 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
     const sendSound = document.getElementById('send-sound');
+    
+    // New API endpoint
+    const API_URL = "https://215a1e7182cd.ngrok-free.app/chat";
 
     if (chatbotWidget && chatWindow && closeChatBtn && chatBody && chatInput && sendBtn && sendSound) {
         let isAudioUnlocked = false;
@@ -158,43 +162,42 @@ document.addEventListener('DOMContentLoaded', () => {
             return messageDiv;
         }
 
-        function handleSendMessage() {
+        async function handleSendMessage() {
             const messageText = chatInput.value.trim();
             if (!messageText) return;
 
             addMessage(messageText, 'sent');
             chatInput.value = '';
 
+            // Play send sound
             if (isAudioUnlocked) {
                 sendSound.currentTime = 0;
-                const playPromise = sendSound.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => console.error("Could not play the sound:", error));
-                }
+                sendSound.play().catch(error => console.error("Could not play the sound:", error));
             }
 
             const typingIndicator = addMessage("...", 'received', true);
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    // Added session_id as per the new logic
+                    body: JSON.stringify({ message: messageText, session_id: "12345" }),
+                });
 
-            fetch('http://localhost:3000/chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: messageText }),
-            })
-            .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                return response.json();
-            })
-            .then(data => {
-                typingIndicator.querySelector('p').textContent = data.reply;
+
+                const data = await response.json();
+                typingIndicator.querySelector('p').textContent = data.reply || "Sorry, I didn't get a response.";
                 typingIndicator.querySelector('p').classList.remove('typing-indicator');
-            })
-            .catch(error => {
+
+            } catch (error) {
                 console.error('Error connecting to chatbot server:', error);
-                typingIndicator.querySelector('p').textContent = "Sorry, I'm having trouble connecting. Please try again later.";
+                typingIndicator.querySelector('p').textContent = "Sorry, I'm having trouble connecting.";
                 typingIndicator.querySelector('p').classList.remove('typing-indicator');
-            });
+            }
         }
 
         sendBtn.addEventListener('click', handleSendMessage);
