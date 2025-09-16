@@ -971,7 +971,7 @@ body {
 /* ===== STATS BANNER SECTION ===== --> */
 .stats-banner {
   padding: 80px 20px;
-  background-image: linear-gradient(rgba(13, 27, 61, 0.85), rgba(13, 27, 61, 0.85)), url('/img/images.jpeg');
+  background-image: linear-gradient(rgba(13, 27, 61, 0.85), rgba(13, 27, 61, 0.85)), url('/Frontend/img/images.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Parallax effect */
@@ -1308,7 +1308,7 @@ body {
 /* ===== CALL TO ACTION SECTION ===== */
 .cta-section {
   padding: 100px 20px;
-  background-image: linear-gradient(rgba(13, 27, 61, 0.9), rgba(13, 27, 61, 0.9)), url('/img/images.jpeg');
+  background-image: linear-gradient(rgba(13, 27, 61, 0.9), rgba(13, 27, 61, 0.9)), url('/Frontend/img/images.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Parallax effect */

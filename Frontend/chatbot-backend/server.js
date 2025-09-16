@@ -13,7 +13,7 @@ app.use(express.json()); // Allows the server to understand JSON data
 // IMPORTANT: Get your API key from an environment variable
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 if (!GEMINI_API_KEY) {
-    throw new Error("https://2ed55d09d654.ngrok-free.app/chat environment variable is not set.");
+    throw new Error("GEMINI_API_KEY environment variable is not set.");  // paste your API key here
 }
 
 // Initialize the Generative AI model
