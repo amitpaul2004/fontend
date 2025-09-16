@@ -1,0 +1,25 @@
+# Security-related ignores
+.env
+*.env*
+*.key
+*.pem
+*.crt
+*.p12
+*.db
+*.sqlite
+*.sqlite3
+secrets.json
+config.yaml
+config.yml
+credentials.json
+passwords.txt
+*.pfx
+*.jks
+*.keystore
+*.cert
+*.token
+*.session
+*.log
+!chatlogs/
+dumps
+venv

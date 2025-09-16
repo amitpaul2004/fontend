@@ -1,0 +1,9 @@
+flask
+python-dotenv
+google-generativeai
+sentence-transformers
+faiss-cpu
+requests
+python-telegram-bot
+flask-cors
+bleach
